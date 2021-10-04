@@ -7,6 +7,7 @@ import com.example.learn.databinding.ActivityMainBinding
 import kotlin.math.pow
 import kotlin.math.sqrt
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
+
     private val mainActivity: ActivityMainBinding by viewBinding()
 
     override fun onCreate(savedInstanceState: Bundle?) {
