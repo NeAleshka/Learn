@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Learn</string>
+    <string name="tittle">Search C</string>
+    <string name="Null" translatable="false">null</string>
+    <string name="textRes">Result:&#160;</string>
+    <string name="InputA">Input \"A\"</string>
+    <string name="InputB">Input \"B\"</string>
+    <string name="btText">Result</string>
+    <string name="masErrorA">Input A</string>
+    <string name="masErrorB">Input B</string>
+
 </resources>
