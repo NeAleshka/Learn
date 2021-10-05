@@ -1,40 +1,34 @@
 package com.example.learn
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.learn.databinding.ActivityMainBinding
-import kotlin.math.pow
-import kotlin.math.sqrt
+
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
-
+private val imgList= listOf(
+    R.drawable.plant_1,
+    R.drawable.plant_2,
+    R.drawable.plant_3,
+    R.drawable.plant_4)
+    private var index=0
     private val mainActivity: ActivityMainBinding by viewBinding()
-
+private val adapter=PlantAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainActivity.button.setOnClickListener {
-            if(!isFieldEmpty()){
-            val result=getString(R.string.textRes)+getResult()
-            mainActivity.tVResult.text=result
-                Log.d("MyLog",result)
-            }
-        }
+        unit()
+
     }
-    private fun isFieldEmpty():Boolean {
-        mainActivity.apply {
-        if(edA.text.isNullOrEmpty()) edA.error=getText(R.string.masErrorA)
-        if(edB.text.isNullOrEmpty()) edB.error=getText(R.string.masErrorB)
-            return edA.text.isNullOrEmpty()|| edB.text.isNullOrEmpty()
-        }
-    }
-private fun getResult():String{
-    val a:Double
-    val b:Double
+private fun unit(){
     mainActivity.apply {
-        a=edA.text.toString().toDouble()
-        b=edB.text.toString().toDouble()
+        rcView.layoutManager=GridLayoutManager(this@MainActivity,3)
+        rcView.adapter=adapter
+        button.setOnClickListener{
+            if (index>3) index=0
+        val plant=Plant(imgList[index],"Plant $index")
+        adapter.addPlant(plant)
+            index++
+        }
     }
-    val result=sqrt((a.pow(2))+(b.pow(2)))
-    return ("%.2f".format(result))
 }
 }
